@@ -38,6 +38,6 @@ export default defineType({
     }),
   ],
   preview: {
-    select: {title: 'name', media: 'image'},
+    select: {title: 'name', subtitle: 'email', media: 'image'},
   },
 })

@@ -62,16 +62,17 @@ export default defineType({
       title: 'title',
       date: 'releaseDate',
       media: 'image',
-      journaList0: 'journalist.0.person.name',
+      journalistName: 'journalist.name',
+      updatedDate: '_updatedAt',
     },
     prepare(selection) {
-      const year = selection.date && selection.date.split('-')[0]
-      const cast = [selection.castName0, selection.castName1].filter(Boolean).join(', ')
-
+      const {journalistName, updatedDate} = selection;
+      const formattedDate = new Date(updatedDate).toLocaleDateString('da-DK', {
+        year: 'numeric', month: 'long', day: 'numeric' // Tilpasser formateringen efter behov
+      });
       return {
-        title: `${selection.title} ${year ? `(${year})` : ''}`,
-        date: selection.date,
-        subtitle: cast,
+        title: `${selection.title}`,
+        subtitle: `${journalistName}${formattedDate ? ` | ${formattedDate}` : ''}`,
         media: selection.media,
       }
     },

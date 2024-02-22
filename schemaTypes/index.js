@@ -20,8 +20,7 @@ export const schemaTypes = [
   udland,
   journalister,
   tags,
-  
-  /* movie,
+  /* 
   person,
   
   screening, */

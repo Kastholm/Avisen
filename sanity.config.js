@@ -4,11 +4,13 @@ import {visionTool} from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemaTypes'
 import {theme} from 'https://themer.sanity.build/api/hues?preset=tw-cyan'
-import { media } from 'sanity-plugin-media'
-import { scheduledPublishing } from '@sanity/scheduled-publishing'
-import { assist } from '@sanity/assist'
+import {media} from 'sanity-plugin-media'
+import {scheduledPublishing} from '@sanity/scheduled-publishing'
+import {assist} from '@sanity/assist'
 import MyNavBar from './components/MyNavBar'
-import {myPlugin} from './udgivelser'
+import MyLayout from './components/MyLayout'
+import './stylesheets/studio.css'
+//import {myPlugin} from './Udgivelser'
 
 export default defineConfig({
   name: 'default',
@@ -22,7 +24,7 @@ export default defineConfig({
     //visionTool(),
     media(),
     scheduledPublishing(),
-    myPlugin(),
+    //myPlugin(),
     //googleMapsInput(),
   ],
 
@@ -38,5 +40,3 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
-
-
