@@ -9,21 +9,27 @@ import plotSummaries from './plotSummaries'
 import journalister from './journalister'
 
 import Sundhed from './Categories/Sundhed'
+import Indland from './Categories/Indland'
+import udland from './Categories/udland'
+import tags from './tags'
 
 export const schemaTypes = [
   // Document types
   Sundhed,
+  Indland,
+  udland,
   journalister,
+  tags,
   
-  movie,
+  /* movie,
   person,
   
-  screening,
+  screening, */
 
   // Other types
   blockContent,
-  plotSummary,
+  /* plotSummary,
   plotSummaries,
   castMember,
-  crewMember,
+  crewMember, */
 ]

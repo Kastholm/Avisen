@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
-import {MdFitnessCenter as icon} from 'react-icons/md'
+import {MdCardTravel as icon} from 'react-icons/md'
 
 export default defineType({
-  name: 'sundhed',
-  title: 'Sundhed',
+  name: 'udland',
+  title: 'Udland',
   type: 'document',
   icon,
   fields: [
