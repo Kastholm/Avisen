@@ -35,12 +35,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'releaseDate',
-      title: 'Udgivelse',
-      type: 'datetime',
-      description: 'Hvis udgivelsen er nu, efterlad den blank',
-    }),
-    defineField({
       name: 'tags',
       title: 'Definer tags',
       type: 'array',
