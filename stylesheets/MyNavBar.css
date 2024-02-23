@@ -1,0 +1,46 @@
+nav {
+     background-color: #3b6f8c; /* Lys grå baggrund */
+     padding: 20px 0; /* Lidt padding øverst og nederst */
+     margin-bottom: 20px; /* Afstand til næste element */
+     display: grid;
+     grid-template-columns: auto auto;
+ }
+ 
+ button {
+     background-color: #0f1728; /* Blå baggrund */
+     color: #fbfbfb; /* Hvid tekst */
+     border: none; /* Ingen ramme */
+     padding: 10px 20px; /* Padding omkring teksten */
+     margin: 0 5px; /* Lidt afstand mellem knapperne */
+     cursor: pointer; /* Cursor ændring ved hover */
+     font-weight: bold; /* Fed tekst */
+     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Liberation Sans", Helvetica, Arial, system-ui, sans-serif; /* Skrifttype */
+ }
+
+ .searchContainer {
+     display: flex;
+     gap: 2em;
+     justify-content: end;
+     margin-right: 1em;
+ }
+ 
+ select {
+     padding: 10px 20px; /* Gør select boksen større */
+     margin: 0 5px; /* Afstand fra teksten */
+     width: 35em;
+     font-size: 1.4em;
+ }
+ 
+ img {
+     width: 130px; /* Sæt logoet til en bestemt bredde */
+     margin-right: 0 auto;
+     margin-left: 1em;
+ }
+ 
+ option {
+     width: 40em;
+ }
+ 
+ h2 {
+     font-size: 1rem;
+ }

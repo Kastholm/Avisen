@@ -10,6 +10,7 @@ import {assist} from '@sanity/assist'
 import MyNavBar from './components/MyNavBar'
 import MyLayout from './components/MyLayout'
 import './stylesheets/studio.css'
+import './stylesheets/MyNavBar.css'
 //import {myPlugin} from './Udgivelser'
 
 export default defineConfig({
