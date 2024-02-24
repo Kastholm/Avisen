@@ -1,5 +1,6 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
+import { muxInput } from 'sanity-plugin-mux-input'
 import {visionTool} from '@sanity/vision'
 //import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemaTypes'
@@ -24,6 +25,7 @@ export default defineConfig({
     structureTool(),
     //visionTool(),
     media(),
+    muxInput(),
     scheduledPublishing(),
     //myPlugin(),
     //googleMapsInput(),

@@ -1,13 +1,14 @@
 //Sundhed.js
-import {defineField, defineType} from 'sanity'
+import {defineField, defineType, defineArrayMember} from 'sanity'
 import {MdFitnessCenter as icon} from 'react-icons/md'
-import {TikTokUrlInput} from '../../plugins/TikTokUrlInput'
+
 
 export default defineType({
   name: 'sundhed',
   title: 'Sundhed',
   type: 'document',
   icon,
+  
   fields: [
     defineField({
       name: 'title',
@@ -89,25 +90,19 @@ export default defineType({
       type: 'blockContent',
       hidden: ({document}) => !document?.showTwitterFields,
     }),
-    defineField({
+    /* defineField({
       name: 'showTikTokFields',
       title: 'Indsæt TikTok video',
       type: 'boolean',
       initialValue: false,
-    }) /* 
-    defineField({
-      name: 'tiktok',
-      title: 'TikTok video',
-      type: 'url',
-      hidden: ({document}) => !document?.showTikTokFields,
-    })  , */,
+    }),
     defineField({
       name: 'tiktokIframe',
       title: 'TikTok video',
       type: 'url',
       inputComponent: TikTokUrlInput,
       hidden: ({document}) => !document?.showTikTokFields,
-    }),
+    }), */
     defineField({
       name: 'journalist',
       title: 'Journalist',

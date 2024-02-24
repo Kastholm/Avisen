@@ -1,17 +1,14 @@
 import blockContent from './blockContent'
-import crewMember from './crewMember'
-import castMember from './castMember'
-import movie from './movie'
-import person from './person'
-import screening from './screening'
-import plotSummary from './plotSummary'
-import plotSummaries from './plotSummaries'
 import journalister from './journalister'
 
 import Sundhed from './Categories/Sundhed'
 import Indland from './Categories/Indland'
 import udland from './Categories/udland'
 import tags from './tags'
+import {youTubeType} from './mediaTypes/YouTubeType'
+import { tikTokType } from './mediaTypes/TikTokType'
+import { faceBookType } from './mediaTypes/FacebookType'
+import { instagramType } from './mediaTypes/instagramType'
 
 export const schemaTypes = [
   // Document types
@@ -20,13 +17,18 @@ export const schemaTypes = [
   udland,
   journalister,
   tags,
+  // Social Media tags
+  youTubeType,
+  tikTokType,
+  faceBookType,
+  instagramType,
+  
+  // Other types
+  blockContent,
   /* 
   person,
   
   screening, */
-
-  // Other types
-  blockContent,
   /* plotSummary,
   plotSummaries,
   castMember,

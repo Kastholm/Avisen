@@ -10,6 +10,7 @@ import {defineArrayMember, defineType} from 'sanity'
  *    type: 'blockContent'
  *  }
  */
+
 export default defineType({
   title: 'Block Content',
   name: 'blockContent',
@@ -59,9 +60,61 @@ export default defineType({
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
+    //https://www.npmjs.com/package/react-social-media-embed#tiktok
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
     }),
+    defineArrayMember({
+      type: 'youTube'
+    }),
+    defineArrayMember({
+      type: 'tikTok'
+    }),
+    defineArrayMember({
+      type: 'faceBook'
+    }),
+    defineArrayMember({
+      type: 'instagram'
+    }),
+
+    /* {
+      title: 'Insert Media',
+      name: 'insertMedia',
+      type: 'object',
+      fields: [
+        {
+          title: 'Media Type',
+          name: 'mediaType',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Image', value: 'image'},
+              {title: 'YouTube Video', value: 'youTube'},
+              {title: 'TikTok Video', value: 'tikTok'},
+            ],
+          },
+        },
+        {
+          title: 'Image',
+          name: 'image',
+          type: 'image',
+          options: {hotspot: true},
+          hidden: ({parent}) => parent?.mediaType !== 'image',
+        },
+        {
+          title: 'YouTube URL',
+          name: 'youTubeUrl',
+          type: 'url',
+          hidden: ({parent}) => parent?.mediaType !== 'youTube',
+        },
+        {
+          title: 'TikTok URL',
+          name: 'tikTokUrl',
+          type: 'tikTok',
+        },
+      ],
+    }, */
+    
   ],
 })
