@@ -1,5 +1,7 @@
+//Sundhed.js
 import {defineField, defineType} from 'sanity'
 import {MdFitnessCenter as icon} from 'react-icons/md'
+import {TikTokUrlInput} from '../../plugins/TikTokUrlInput'
 
 export default defineType({
   name: 'sundhed',
@@ -22,6 +24,17 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'teaser',
+      title: 'Teaser',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Definer tags',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'tags'}]}],
+    }),
+    defineField({
       name: 'image',
       title: 'Artikel Billede',
       type: 'image',
@@ -35,21 +48,71 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'tags',
-      title: 'Definer tags',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'tags'}]}],
+      name: 'showFacebookFields',
+      title: 'Brug Opengraph (Facebook)',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'fbimage',
+      title: 'Facebook Billede',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      hidden: ({document}) => !document?.showFacebookFields,
+    }),
+    defineField({
+      name: 'fbsource',
+      title: 'Facebook billede beskrivelse',
+      type: 'blockContent',
+      hidden: ({document}) => !document?.showFacebookFields,
+    }),
+    defineField({
+      name: 'showTwitterFields',
+      title: 'Brug Twitter',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'twitterimage',
+      title: 'Twitter Billede',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      hidden: ({document}) => !document?.showTwitterFields,
+    }),
+    defineField({
+      name: 'twittersource',
+      title: 'Twitter billede beskrivelse',
+      type: 'blockContent',
+      hidden: ({document}) => !document?.showTwitterFields,
+    }),
+    defineField({
+      name: 'showTikTokFields',
+      title: 'Indsæt TikTok video',
+      type: 'boolean',
+      initialValue: false,
+    }) /* 
+    defineField({
+      name: 'tiktok',
+      title: 'TikTok video',
+      type: 'url',
+      hidden: ({document}) => !document?.showTikTokFields,
+    })  , */,
+    defineField({
+      name: 'tiktokIframe',
+      title: 'TikTok video',
+      type: 'url',
+      inputComponent: TikTokUrlInput,
+      hidden: ({document}) => !document?.showTikTokFields,
     }),
     defineField({
       name: 'journalist',
       title: 'Journalist',
       type: 'reference',
       to: [{type: 'journalist'}],
-    }),
-    defineField({
-      name: 'teaser',
-      title: 'Teaser',
-      type: 'blockContent',
     }),
     defineField({
       name: 'overview',
@@ -66,10 +129,12 @@ export default defineType({
       updatedDate: '_updatedAt',
     },
     prepare(selection) {
-      const {journalistName, updatedDate} = selection;
+      const {journalistName, updatedDate} = selection
       const formattedDate = new Date(updatedDate).toLocaleDateString('da-DK', {
-        year: 'numeric', month: 'long', day: 'numeric' // Tilpasser formateringen efter behov
-      });
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric', // Tilpasser formateringen efter behov
+      })
       return {
         title: `${selection.title}`,
         subtitle: `${journalistName}${formattedDate ? ` | ${formattedDate}` : ''}`,

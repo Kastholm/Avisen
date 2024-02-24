@@ -27,8 +27,10 @@ nav {
  select {
      padding: 10px 20px; /* Gør select boksen større */
      margin: 0 5px; /* Afstand fra teksten */
-     width: 35em;
+     width: 25em;
      font-size: 1.4em;
+     background-color: #fbfbfb;
+     border-radius: 10px;
  }
  
  img {
