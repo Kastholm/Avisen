@@ -90,19 +90,6 @@ export default defineType({
       type: 'blockContent',
       hidden: ({document}) => !document?.showTwitterFields,
     }),
-    /* defineField({
-      name: 'showTikTokFields',
-      title: 'Indsæt TikTok video',
-      type: 'boolean',
-      initialValue: false,
-    }),
-    defineField({
-      name: 'tiktokIframe',
-      title: 'TikTok video',
-      type: 'url',
-      inputComponent: TikTokUrlInput,
-      hidden: ({document}) => !document?.showTikTokFields,
-    }), */
     defineField({
       name: 'journalist',
       title: 'Journalist',

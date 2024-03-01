@@ -9,6 +9,7 @@ import {youTubeType} from './mediaTypes/YouTubeType'
 import { tikTokType } from './mediaTypes/TikTokType'
 import { faceBookType } from './mediaTypes/FacebookType'
 import { instagramType } from './mediaTypes/instagramType'
+import { visionTool } from '@sanity/vision'
 
 export const schemaTypes = [
   // Document types

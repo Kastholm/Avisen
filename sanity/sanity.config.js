@@ -23,7 +23,7 @@ export default defineConfig({
 
   plugins: [
     structureTool(),
-    //visionTool(),
+    visionTool(),
     media(),
     muxInput(),
     scheduledPublishing(),
