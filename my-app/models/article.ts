@@ -7,4 +7,5 @@ export interface Article {
      tagNames: string[];
      JournalistName: string;
      JournalistPhoto: {};
+     JournalistSlug: string;
 }

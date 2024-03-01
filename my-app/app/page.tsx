@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { client, urlFor } from "../../lib/sanity";
-import { Article } from "../../models/article";
+import { client, urlFor } from "../lib/sanity";
+import { Article } from "../models/article";
 import Link from "next/link";
 
 async function getData() {
@@ -18,7 +18,8 @@ async function getData() {
       image,
       "tagNames": tags[]->name,
       "JournalistName": journalist->name,
-      "JournalistPhoto": journalist->image
+      "JournalistPhoto": journalist->image,
+      "JournalistSlug": journalist->slug.current
   }`;
   const data = await client.fetch(query);
 
@@ -35,7 +36,7 @@ export default async function Home() {
       <div className="grid grid-cols-3 gap-6">
         {data.map((article) => (
           <div key={article._id} className="bg-white p-6">
-            <Link href={`/pages/articles/journalist/${article.JournalistName}`}>
+            <Link href={`/pages/articles/journalist/${article.JournalistSlug}`}>
               <div className="grid grid-cols-2 mb-14">
                 <Image
                   className="object-contain"

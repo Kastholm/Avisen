@@ -1,17 +1,18 @@
-
 import Image from "next/image";
-import { client, urlFor } from "../../../../../../lib/sanity";
-import { Article } from "../../../../../../models/article";
+import { client, urlFor } from "../../../../../lib/sanity";
+import { Article } from "../../../../../models/article";
 import Link from "next/link";
 
-
-
-export default async function categoryView({ params }: { params: { category: string } }) {
-  
+export default async function journalistView({
+  params,
+}: {
+  params: { journalist: string };
+}) {
   async function getData() {
     const query = `
     *[
-      _type == "${params.category}"
+      (_type == "sundhed" || _type == "indland")
+      && journalist->slug.current == "${params.journalist}"
     ] 
     | order(_createdAt desc) {
       _id,
@@ -21,24 +22,25 @@ export default async function categoryView({ params }: { params: { category: str
         image,
         "tagNames": tags[]->name,
         "JournalistName": journalist->name,
-        "JournalistPhoto": journalist->image
+        "JournalistPhoto": journalist->image,
+        "JournalistSlug": journalist->slug.current
     }`;
     const data = await client.fetch(query);
     console.log(data);
     return data;
   }
-  
-  console.log(params.category);
-  
+
+  console.log(params.journalist);
+
   const data: Article[] = await getData();
 
   return (
     <div className="container mx-auto px-4 my-6">
-      <h1 className="text-5xl mb-6">{params.category}</h1>
+      <h1 className="text-5xl mb-6">Artikler af {params.journalist}</h1>
       <div className="grid grid-cols-3 gap-6">
         {data.map((article) => (
           <div key={article._id} className="bg-white p-6">
-            <Link href={`/pages/articles/journalist/${article.JournalistName}`}>
+            <Link href={`/pages/articles/journalist/${article.JournalistSlug}`}>
               <div className="grid grid-cols-2 mb-14">
                 <Image
                   className="object-contain"
@@ -61,7 +63,6 @@ export default async function categoryView({ params }: { params: { category: str
                   <b className=" text-lg text-red-800 ">
                     Klokken:{" "}
                     {new Date(article._createdAt).toLocaleString("da-DK", {
-                      
                       hour: "2-digit",
                       minute: "2-digit",
                     })}
@@ -78,7 +79,9 @@ export default async function categoryView({ params }: { params: { category: str
             />
             <h2 className="text-2xl text-black mt-4">{article.title}</h2>
             <h3 className="mt-4 text-black font-bold text-2xl">Kategori:</h3>
-            <Link href={`/pages/articles/category/${article._type}`}><button className="bg-blue-600 p-4 mt-6">{article._type}</button></Link>
+            <Link href={`/pages/articles/category/${article._type}`}>
+              <button className="bg-blue-600 p-4 mt-6">{article._type}</button>
+            </Link>
             <h3 className="mt-8 text-black font-bold text-2xl">Tags:</h3>
             <div className="mt-4">
               {article.tagNames.map((tag) => (
