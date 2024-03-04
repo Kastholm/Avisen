@@ -8,9 +8,6 @@ export function TikTokPreview(props) {
 
   return (
     <Flex padding={3} align="center" justify="center">
-      {/*  {typeof url === 'string' 
-        ? <YouTubePlayer url={url} /> 
-        : <Text>Add a YouTube URL</Text>} */}
       {typeof url === 'string' ? (
         <Flex>
           {' '}

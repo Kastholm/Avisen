@@ -11,7 +11,7 @@ export default async function journalistView({
   async function getData() {
     const query = `
     *[
-      (_type == "sundhed" || _type == "indland" || _type == "udland" ||)
+      (_type == "sundhed" || _type == "indland" || _type == "udland")
       && journalist->slug.current == "${params.journalist}"
     ] 
     | order(_createdAt desc) {
