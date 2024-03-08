@@ -6,7 +6,7 @@ nav {
      grid-template-columns: auto auto;
  }
  
- button {
+ nav button {
      background-color: #0f1728; /* Blå baggrund */
      color: #fbfbfb; /* Hvid tekst */
      border: none; /* Ingen ramme */
@@ -33,16 +33,16 @@ nav {
      border-radius: 10px;
  }
  
- img {
+ nav img {
      width: 130px; /* Sæt logoet til en bestemt bredde */
      margin-right: 0 auto;
      margin-left: 1em;
  }
  
- option {
+ nav option {
      width: 40em;
  }
  
- h2 {
+ nav h2 {
      font-size: 1rem;
  }

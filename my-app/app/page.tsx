@@ -2,6 +2,8 @@ import Image from "next/image";
 import { client, urlFor } from "../lib/sanity";
 import { Article } from "../models/article";
 import Link from "next/link";
+import LoadMore from "./components/LoadMore";
+import { fetchAnime } from "./action";
 
 async function getData() {
   const query = `
@@ -31,14 +33,13 @@ async function getData() {
 
 export default async function Home() {
   const data: Article[] = await getData();
-
+  const anime = await fetchAnime(1);
   console.log(data);
   return (
     <div className=" px-10">
       <div className="container mx-auto px-4 my-6">
         <h1 className="text-5xl mb-6">Forside</h1>
       </div>
-
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto ">
           <h1 className="text-4xl font-bold text-center text-gray-300 mx-auto rounded-lg ">
@@ -119,6 +120,15 @@ export default async function Home() {
             ))}
           </div>
         </div>
+
+        <main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
+      <h2 className="text-3xl text-white font-bold">Udforsk nyeste nyheder</h2>
+
+      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+        {anime}
+      </section>
+      <LoadMore />
+    </main>
       </section>
     </div>
   );

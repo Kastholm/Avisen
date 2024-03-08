@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/[...slug].tsx", "app/components/youtube.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/[...slug].tsx", "app/components/youtube.js", "app/components/BarChart.jsx"],
   "exclude": ["node_modules"]
 }

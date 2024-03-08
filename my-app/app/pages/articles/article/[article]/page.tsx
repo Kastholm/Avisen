@@ -22,6 +22,7 @@ export default async function articleView({
       _createdAt,
       _type,
         title,
+        "articleSlug": slug.current,
         overview,
         "teaser": teaser[].children[].text,
         image,

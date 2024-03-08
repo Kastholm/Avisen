@@ -3,6 +3,8 @@ import { client, urlFor } from "../../../../../lib/sanity";
 import { Article } from "../../../../../models/article";
 import Link from "next/link";
 import { Metadata } from "next";
+import LoadMore from "@/app/components/LoadMore";
+import { fetchAnime } from "@/app/action";
 
 
 
@@ -21,6 +23,7 @@ export default async function categoryView({
       _createdAt,
       _type,
         title,
+        "articleSlug": slug.current,
         image,
         "tagNames": tags[]->name,
         "JournalistName": journalist->name,
@@ -35,7 +38,7 @@ export default async function categoryView({
   console.log(params.category);
 
   const data: Article[] = await getData();
-
+  const anime = await fetchAnime(1);
   const metadata: Metadata = {
     title: 'test',
     description: 'test',
@@ -55,13 +58,15 @@ export default async function categoryView({
             {data.map((article) => (
               <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-lg ">
                 {/* <div className="w-full h-64 bg-gray-300 rounded-lg dark:bg-gray-600"></div> */}
-                <Image
-                  className="w-full bg-gray-300 rounded-t-lg dark:bg-gray-600"
-                  src={urlFor(article.image).url()}
-                  alt=""
-                  width={500}
-                  height={500}
-                />
+                <Link href={`/pages/articles/article/${article.articleSlug}`}>
+                  <Image
+                    className="w-full bg-gray-300 rounded-t-lg dark:bg-gray-600"
+                    src={urlFor(article.image).url()}
+                    alt=""
+                    width={500}
+                    height={500}
+                  />
+                </Link>
 
                 <div className="p-4">
                   <p className=" bg-gray-200 rounded-lg dark:bg-gray-700">
@@ -118,6 +123,14 @@ export default async function categoryView({
             ))}
           </div>
         </div>
+        <main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
+      <h2 className="text-3xl text-white font-bold">Udforsk indenfor kategori: {params.category}</h2>
+
+      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+        {anime}
+      </section>
+      <LoadMore />
+    </main>
       </section>
     </div>
   );
