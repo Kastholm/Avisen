@@ -56,7 +56,7 @@ export default async function categoryView({
 
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3">
             {data.map((article) => (
-              <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-lg ">
+              <div key={article._id} className="w-full bg-gray-100 dark:bg-gray-700 rounded-lg ">
                 {/* <div className="w-full h-64 bg-gray-300 rounded-lg dark:bg-gray-600"></div> */}
                 <Link href={`/pages/articles/article/${article.articleSlug}`}>
                   <Image

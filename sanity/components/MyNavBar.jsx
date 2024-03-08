@@ -69,7 +69,7 @@ function MyNavbar(props) {
   return (
     <Stack>
       <nav tone="caution">
-        <img src={logo} alt="Logo" />
+        <image src={logo} alt="Logo" />
         <div className="searchContainer">
 
           {selectedNavItems.length > 0 ? (
@@ -79,7 +79,7 @@ function MyNavbar(props) {
                   <option value="">Skift medie</option>
                   {selectedNavItems.map((media) => (
                     <option key={media.url} value={media.url}>
-                      <img src={logo} alt="Logo" />
+                      <image src={logo} alt="Logo" />
                       {media.name}
                     </option>
                   ))}
@@ -93,7 +93,7 @@ function MyNavbar(props) {
                   <option value="">Skift medie</option>
                   {navItems.map((media) => (
                     <option key={media.url} value={media.url}>
-                      <img src={logo} alt="Logo" />
+                      <image src={logo} alt="Logo" />
                       {media.name}
                     </option>
                   ))}

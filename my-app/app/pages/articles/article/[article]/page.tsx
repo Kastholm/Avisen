@@ -44,7 +44,7 @@ export default async function articleView({
   // Barebones lazy-loaded image component
   const SampleImageComponent = ({ value, isInline }: any) => (
     <img
-      src={urlFor()
+      src={urlFor(value)
         .image(value)
         .width(isInline ? 100 : 800)
         .fit("max")
@@ -55,9 +55,9 @@ export default async function articleView({
       style={{ display: isInline ? "inline-block" : "block" }}
     />
   );
-  const SampleYoutubeComponent = ({ value }) => {
+  const SampleYoutubeComponent = ({ value }: any) => {
     // Ekstraher videoID fra YouTube URL'en
-    let videoId = "";
+    let videoId: any = "";
     const url = new URL(value.url);
     const pathname = url.pathname;
     const searchParams = url.searchParams;
@@ -86,7 +86,7 @@ export default async function articleView({
     );
   };
 
-  const SampleTikTokComponent = ({ value }) => {
+  const SampleTikTokComponent = ({ value }: any) => {
     // URL'en til TikTok-videoen
     const tikTokUrl = value.url;
 
@@ -102,27 +102,25 @@ export default async function articleView({
     );
   };
 
-  const SampleFacebookComponent = ({ value }) => {
+  const SampleFacebookComponent = ({ value }: any) => {
     // Erstat 'YOUR_URL' med din Facebook embed URL
     const embedUrl = value.url.replace("fb.watch", "www.facebook.com/watch");
-  
+
     return (
       <iframe
         src={embedUrl}
         width="560"
         height="315"
-        style={{ border: 'none', overflow: 'hidden' }}
+        style={{ border: "none", overflow: "hidden" }}
         scrolling="no"
         frameBorder="0"
-        allowTransparency="true"
         allow="encrypted-media"
         allowFullScreen={true}
       ></iframe>
     );
   };
-  
 
-  const SampleInstagramComponent = ({ value }) => {
+  const SampleInstagramComponent = ({ value }: any) => {
     return (
       <a href={value.url} target="_blank" rel="noopener noreferrer">
         Se dette indlæg på Instagram
@@ -159,7 +157,7 @@ export default async function articleView({
 
           <div className="grid-cols-1">
             {data.map((article) => (
-              <div className="w-full  rounded-lg ">
+              <div key={article._id} className="w-full  rounded-lg ">
                 {/* <div className="w-full h-64 bg-gray-300 rounded-lg dark:bg-gray-600"></div> */}
                 <h1 className="text-6xl mb-12">{article.title}</h1>
                 <div className="p-4">
