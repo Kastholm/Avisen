@@ -36,21 +36,26 @@ export default async function Home() {
   const anime = await fetchAnime(1);
   console.log(data);
   return (
-    <div className=" px-10">
-      <div className="container mx-auto px-4 my-6">
-        <h1 className="text-5xl mb-6">Forside</h1>
-      </div>
+    <div className="">
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto ">
-          <h1 className="text-4xl font-bold text-center text-gray-300 mx-auto rounded-lg ">
+          {/* <h1 className="text-4xl font-bold text-center text-gray-300 mx-auto rounded-lg ">
             Dagens nyheder
           </h1>
 
           <p className="text-center mx-auto mt-4 text-gray-300  rounded-lg ">
             Bragt direkte til dig
-          </p>
+          </p> */}
           {/* <p className="w-64 h-2 mx-auto mt-4 bg-gray-200 rounded-lg sm:w-80 dark:bg-gray-700"></p> */}
 
+<div className="grid grid-cols-2">
+  <div className="text-[1.3rem] grid gap-2 p-4 pl-0">
+    <h1 className="text-[2.3rem] ">Forvirring blandt danske bilister: Sådan skal du blinke, når du kører i en rundkørsel</h1>
+    <h3 className="text-[1.3rem] ">Det er langt fra alle bilister, der er klar over, hvordan reglerne i en rundkørsel egentlig er.</h3>
+    <h4 className="text-[1.3rem] ">skrevet af --</h4>
+  </div>
+  <img className="rounded-lg" src="https://d28ku8nzmkcjr6.cloudfront.net/cache/37/a4/37a416e4236ba4f53158bcdadca4e414.webp" alt="" />
+</div>
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3">
             {data.map((article) => (
               <div key={article._id} className="w-full bg-gray-100 dark:bg-gray-700 rounded-lg ">
